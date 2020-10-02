@@ -6,12 +6,12 @@
     manager: independent
     trigger:
       github:
-        - event: pull_request
+        - event: push_request
           action:
             - opened
             - changed
             - reopened
-        - event: pull_request
+        - event: push_request
           action: comment
           comment: (?i)^\s*recheck\s*$
     start:
@@ -50,19 +50,19 @@
         - event: pull_request_review
           action: submitted
           state: approved
-        - event: pull_request
+        - event: push_request
           action: comment
           comment: (?i)^\s*regate\s*$
-        - event: pull_request_review
+        - event: push_request_review
           action: submitted
           state: approved
-        - event: pull_request_review
+        - event: push_request_review
           action: dismissed
           state: request_changes
-        - event: pull_request
+        - event: push_request
           action: status
           status: ".*:success"
-        - event: pull_request
+        - event: push_request
           action: labeled
           label: gate
     start:
