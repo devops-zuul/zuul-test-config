@@ -2,7 +2,7 @@
     name: check
     description: |
       Newly opened pull requests enter this pipeline to receive an
-      initial verification
+      initial verification try
     manager: independent
     trigger:
       github:
