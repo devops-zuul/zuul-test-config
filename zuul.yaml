@@ -1,27 +1,34 @@
 - pipeline:
     name: check
-    description: |
-      Newly opened pull requests enter this pipeline to receive an
-      initial verification
+    post-review: true
     manager: independent
     trigger:
-      github:
+      github_conn:
         - event: pull_request
           action:
             - opened
             - changed
-            - reopened
         - event: pull_request
-          action: comment
-          comment: (?i)^\s*recheck\s*$
-        - event: check_run
-    start:
-      github:
-        check: 'in_progress'
-        comment: false
+          action:
+            - comment
+          comment:
+            - '^recheck.*$'
     success:
-      github:
-        check: 'success'
+      github_conn:
+        comment: true
+        status: success
     failure:
-      github:
-        check: 'failure'
+      github_conn:
+        comment: true
+        status: failure
+    merge-failure:
+      github_conn:
+        comment: true
+        status: failure
+    start:
+      github_conn:
+        comment: true
+        status: pending
+    disabled:
+      github_conn:
+        comment: true
