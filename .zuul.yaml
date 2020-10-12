@@ -40,14 +40,14 @@
       jobs: []
 
 - project:
-    name: devops-zuul/zuul-config
+    name: devops-zuul/zuul-test-config
     check:
       jobs:
         - noop
    
 - job:
     name: base
-    parent: null
+    parent: zuul-base-jobs
     nodeset:
       nodes:
         - name: ubuntu-xenial
