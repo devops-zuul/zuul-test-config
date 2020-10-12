@@ -37,10 +37,12 @@
 
 
 - project:
-    name: devops-zuul/zuul-test-config
+    name: devops-zuul/zuul-test
     check:
       jobs:
+        - testjob
         - noop
+         
 
  
 
