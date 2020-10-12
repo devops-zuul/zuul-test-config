@@ -32,17 +32,33 @@
     disabled:
       github:
         comment: true
+        
+        
+- project:
+    name: ^.*$
+    check:
+      jobs: []
+
+- project:
+    name: devops-zuul/zuul-config
+    check:
+      jobs:
+        - noop
+   
+- job:
+    name: base
+    parent: null
+    nodeset:
+      nodes:
+        - name: ubuntu-xenial
+          label: ubuntu-xenial
+
 
  
 
 
-- project:
-    name: devops-zuul/zuul-test
-    check:
-      jobs:
-        - testjob
-        - noop
-         
+
+ 
 
  
 
