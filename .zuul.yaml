@@ -45,13 +45,6 @@
       jobs:
         - noop
    
-- job:
-    name: base
-    parent: zuul-base-jobs
-    nodeset:
-      nodes:
-        - name: ubuntu-xenial
-          label: ubuntu-xenial
 
 
  
