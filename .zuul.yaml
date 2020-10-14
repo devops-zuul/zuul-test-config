@@ -33,12 +33,7 @@
       github:
         comment: true
         
-        
-- project:
-    name: ^.*$
-    check:
-      jobs: []
-
+      
 - project:
     name: devops-zuul/zuul-test-config
     check:
