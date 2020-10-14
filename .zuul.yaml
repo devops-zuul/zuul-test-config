@@ -39,11 +39,9 @@
     check:
       jobs:
         - noop
-        - testjob
         
-- job:
-    name: testjob
-    run: testjob.yaml
+        
+
         
 
 
