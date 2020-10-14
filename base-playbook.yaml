@@ -7,4 +7,4 @@
     - zuul-git:
         data:
           zuul:
-            log_url: http://zuul-webinar.codilime.com/logs/{{ zuul.build }}
+            log_url: http://localhost:8080
