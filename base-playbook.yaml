@@ -2,9 +2,10 @@
   tasks:
     - name: Start zuul_console daemon.
       zuul_console:
+
 - hosts: localhost
   tasks:
-    - zuul-git:
+    - zuul_return:
         data:
           zuul:
-            log_url: "http://localhost:8080"
+            log_url: "http://localhost:8000"
