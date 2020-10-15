@@ -32,14 +32,27 @@
     disabled:
       github:
         comment: true
-
+        
+      
 - project:
     name: devops-zuul/zuul-test-config
     check:
       jobs:
         - noop
+        
 
-- job:
-    name: base
-    parent: null
-    pre-run: base-playbook.yaml
+        
+        
+
+        
+
+
+
+ 
+
+
+
+ 
+
+ 
+
