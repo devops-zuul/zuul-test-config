@@ -104,6 +104,11 @@
         status: 'failure'
         comment: true
         
+- project:
+    name: ^.*$
+    check:
+      jobs: []
+        
       
 - project:
     name: devops-zuul/zuul-test-config
