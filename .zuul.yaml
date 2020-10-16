@@ -138,17 +138,13 @@
     check:
       jobs:
         - noop
-        - testjob1
         
 - job:
     name: base
     parent: null
     pre-run: base-playbook.yaml
     
-- job:
-    name: base
-    parent: null
-    run: testjob1.yaml
+
 
         
 
