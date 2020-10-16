@@ -42,7 +42,10 @@
 - job:
     name: base
     parent: null
-    pre-run: base-playbook.yaml
+    nodeset:
+      nodes:
+        - name: ubuntu-bionic
+          label: ubuntu-bionic
     
 
 
