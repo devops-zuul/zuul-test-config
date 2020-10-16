@@ -123,7 +123,8 @@
     pre-run: base-playbook.yaml
     
 - job:
-    name: testjob1
+    name: base
+    parent: null
     run: testjob1.yaml
 
         
