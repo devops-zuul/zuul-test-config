@@ -5,7 +5,7 @@
       initial verification
     manager: independent
     trigger:
-      github:
+      github1:
         - event: pull_request
           action:
             - opened
@@ -15,14 +15,14 @@
           action: comment
           comment: (?i)^\s*recheck\s*$
     start:
-      github:
+      github1:
         status: pending
         comment: false
     success:
-      github:
+      github1:
         status: 'success'
     failure:
-      github:
+      github1:
         status: 'failure'
 
 - project:
