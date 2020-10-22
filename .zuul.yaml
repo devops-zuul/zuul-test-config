@@ -6,26 +6,47 @@
     manager: independent
     trigger:
       github:
+        # Run this pipeline on new/changed pull requests
         - event: pull_request
           action:
             - opened
             - changed
             - reopened
+        # Run in response to a pull request comment "recheck"
         - event: pull_request
           action: comment
           comment: (?i)^\s*recheck\s*$
+        # When using the checks API to report results, failed runs
+        # will have a "re-run" button which emits this event.
+        - event: check_run
     start:
       github:
-        status: 'pending'
-        status-url: "http://localhost:9000/t/quickstart/status"
+        check: 'in_progress'
         comment: false
+        # It is recommended to use the checks API for consistency with
+        # other common CI tools that integrate with Github.  Results
+        # will appear on the "checks" tab of PR and changes.  There is
+        # generally no need to have Zuul leave comments when using the
+        # checks API.
+        #
+        # The older status API appears inline with the PR and can be
+        # enabled by uncommenting the "status:" in the various
+        # sections below.  You should choose one or the other
+        # depending on project preferences.
+        #
+        #status: 'pending'
+        #comment: false
     success:
       github:
-        status: 'success'
-     
+        check: 'success'
+        comment: false
+        #status: 'success'
     failure:
       github:
-        status: 'failure'
+        check: 'failure'
+        comment: false
+        #status: 'failure'
+
 - pipeline:
     name: gate
     description: |
@@ -64,25 +85,29 @@
           status: ".*:success"
         - event: pull_request
           action: labeled
-          label: gate
+          label:
+            - gate
     start:
       github:
-        status: 'pending'
-        status-url: "http://localhost:9000/t/quickstart/status"
+        check: 'in_progress'
         comment: false
+        #status: 'pending'
     success:
       github:
-        status: 'success'
+        check: 'success'
+        comment: false
+        #status: 'success'
         merge: true
-        comment: true
-     
+   
     failure:
       github:
-        status: 'failure'
-        comment: true
-     
+        check: 'failure'
+        #status: 'failure'
+        comment: false
+      
     window-floor: 20
     window-increase-factor: 2
+
 - pipeline:
     name: post
     post-review: true
@@ -93,17 +118,19 @@
       github:
         - event: push
           ref: ^refs/heads/.*$
-    success:
-      github:
-        status: 'success'
-        merge: true
-        comment: true
-     
-    failure:
-      github:
-        status: 'failure'
-        comment: true
+   
 
+- pipeline:
+    name: tag
+    description: This pipeline runs jobs in response to any tag event.
+    manager: independent
+    precedence: high
+    post-review: True
+    trigger:
+      github:
+        - event: push
+          ref: ^refs/tags/.*$
+   
 - project:
     name: devops-zuul/zuul-test-config
     check:
