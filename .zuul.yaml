@@ -1,7 +1,8 @@
 - pipeline:
     name: check
     description: |
-      Newly uploaded patchsets enter in this pipeline .
+      Newly uploaded patchsets enter in this pipeline, Changes that have been approved by core developers are enqueued
+      in order.
     manager: independent
     trigger:
       github:
