@@ -20,7 +20,7 @@
         comment: true
 
 - pipeline:
-    name: gate
+    name: check
     description: |
       Newly uploaded patchsets enter this pipeline to receive an
       initial check status.
@@ -47,8 +47,6 @@
     failure:
       github:
         status: 'failure'
-
-
 
 
    
