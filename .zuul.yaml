@@ -1,6 +1,6 @@
 - pipeline:
-    name: post
-    post-review: true
+    name: check
+    check-review: true
     description: This pipeline runs jobs that operate after each change is merged.
     manager: independent
     precedence: low
@@ -20,7 +20,7 @@
         comment: true
 
 - pipeline:
-    name: check
+    name: gate
     description: |
       Newly uploaded patchsets enter this pipeline to receive an
       initial check status.
