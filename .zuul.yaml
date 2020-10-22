@@ -1,25 +1,4 @@
 - pipeline:
-    name: post
-    post-review: true
-    description: This pipeline runs jobs that operate after each change is merged.
-    manager: independent
-    precedence: low
-    trigger:
-      github:
-        - event: push
-          ref: ^refs/heads/.*$
-    success:
-      github:
-        status: 'success'
-        merge: true
-        comment: true
-     
-    failure:
-      github:
-        status: 'failure'
-        comment: true
-
-- pipeline:
     name: check
     description: |
       Newly uploaded patchsets enter this pipeline to receive an
@@ -47,6 +26,30 @@
     failure:
       github:
         status: 'failure'
+- pipeline:
+    name: post
+    post-review: true
+    description: This pipeline runs jobs that operate after each change is merged.
+    manager: independent
+    precedence: low
+    trigger:
+      github:
+        - event: push
+          ref: ^refs/heads/.*$
+    success:
+      github:
+        status: 'success'
+        merge: true
+        comment: true
+     
+    failure:
+      github:
+        status: 'failure'
+        comment: true
+
+
+
+
 
 
    
