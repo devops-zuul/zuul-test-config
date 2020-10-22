@@ -1,7 +1,7 @@
 - pipeline:
-    name: check
+    name: post
     post-review: true
-    description: This pipeline runs jobs whenever we proposed changes and commit on git
+    description: This pipeline runs jobs that operate after each change is merged.
     manager: independent
     precedence: low
     trigger:
@@ -18,13 +18,12 @@
       github:
         status: 'failure'
         comment: true
+
 - pipeline:
-    name: gate
+    name: check
     description: |
       Newly uploaded patchsets enter this pipeline to receive an
-      initial status. Changes that have been approved by core developers are enqueued
-      in order in this pipeline, and if they pass tests, will be
-      merged.
+      initial check status.
     manager: independent
     trigger:
       github:
@@ -48,6 +47,8 @@
     failure:
       github:
         status: 'failure'
+
+
 
 
    
