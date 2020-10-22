@@ -1,5 +1,5 @@
 - pipeline:
-    name: post
+    name: check
     post-review: true
     description: This pipeline runs jobs that operate after each change is merged.
     manager: independent
