@@ -1,8 +1,7 @@
 - pipeline:
     name: check
     description: |
-      Newly uploaded patchsets enter this pipeline to receive an
-      initial check status.
+      Newly uploaded patchsets enter in this pipeline .
     manager: independent
     trigger:
       github:
@@ -29,7 +28,7 @@
 - pipeline:
     name: post
     post-review: true
-    description: This pipeline runs jobs that operate after each change is merged.
+    description: This pipeline runs jobs that operate after each change proposed.
     manager: independent
     precedence: low
     trigger:
